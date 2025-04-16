@@ -32,7 +32,7 @@ def predict_time():
     vehicle_features = vehicle_mapping.get(selected_vehicle, [0, 0, 0, 0])
 
     features = np.array([[age, distance] + vehicle_features])
-    prediction = model1.predict(features)[0]
+    prediction = round(model1.predict(features)[0], 2)
 
     return jsonify({"Predicted Time Taken (min)": prediction})
 
@@ -52,7 +52,7 @@ def predict_rating():
     ]
 
     features = np.array([[age, time_taken, distance] + vehicle_features])
-    prediction = model2.predict(features)[0]
+    prediction = round(model2.predict(features)[0], 2)
 
     return jsonify({"Predicted Delivery Rating": prediction})
 
